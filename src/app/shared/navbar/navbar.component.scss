@@ -1,0 +1,19 @@
+
+.logo{
+  @apply tw-flex tw-items-center hover:tw-cursor-pointer;
+  &_img{
+    @apply tw-me-2 2xl:tw-w-9 xl:tw-w-8 lg:tw-w-7 md:tw-w-5 tw-w-5;
+  }
+  &_text{
+    @apply tw-no-underline tw-text-logoName tw-font-bold;
+  }
+}
+
+
+.loginBtn{
+  @apply tw-block tw-font-medium tw-text-light tw-bg-logoName  hover:tw-text-logoName hover:tw-bg-light tw-ease-in-out tw-border-2 tw-border-logoName;
+}
+.registerBtn{
+  @apply tw-block tw-font-medium tw-text-logoName tw-bg-transparent  hover:tw-text-light hover:tw-bg-logoName tw-ease-in-out tw-border-2 tw-border-logoName;
+
+}

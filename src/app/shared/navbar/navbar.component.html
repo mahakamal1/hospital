@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light tw-bg-light">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand logo">
+      <img src="assets/Images/logo.png" class="logo_img">
+      <a class="logo_text">Ultra Care House</a>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <div class="d-flex" *ngIf="!isAdminUserLoghedIn">
+        <a class="btn loginBtn tw-me-3" [routerLink]="['/auth/login']">Login</a>
+        <a class="btn registerBtn btn-outline-success" [routerLink]="['/auth/Register']">Register</a>
+      </div>
+      <div class="d-flex tw-items-baseline"*ngIf="isAdminUserLoghedIn">
+        <p class="tw-me-3">Welcome Admin</p>
+        <a class="btn loginBtn tw-me-3">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+

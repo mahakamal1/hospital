@@ -1,0 +1,49 @@
+.formContainer{
+  @apply tw-grid 2xl:tw-grid-cols-2
+  xl:tw-grid-cols-2 lg:tw-grid-cols-2;
+  &_img{
+    @apply tw-grid-cols-1 2xl:tw-block xl:tw-block lg:tw-block tw-hidden md:tw-hidden;
+      background-image:linear-gradient(to bottom right,#FCFFE7,#147AC9), url('../../../../../assets/Images/auth/auth1.jpg');
+      background-blend-mode: overlay;
+      height: 100vh;
+      background-size: cover;
+      background-position: center top;
+  }
+
+  &_form{
+    @apply tw-col-span-1 tw-relative tw-pb-28;
+    &_top{
+      @apply tw-w-full tw-flex tw-flex-col tw-align-middle tw-content-center;
+      &_logoContainer{
+        @apply 2xl:tw-mt-5 xl:tw-mt-14 lg:tw-mt-16 md:tw-mt-20 tw-mt-16 tw-flex tw-w-fit tw-mx-auto tw-content-center tw-items-center;
+      >img{
+        @apply tw-me-2 tw-block 2xl:tw-w-24 xl:tw-w-14 lg:tw-w-14 md:tw-w-20 tw-w-14;
+      }
+      &_text{
+        @apply tw-no-underline tw-text-logoName tw-font-bold;
+      }
+
+      }
+      &_hello{
+        @apply tw-text-logoName tw-text-center 2xl:tw-my-6 xl:tw-my-6 lg:tw-my-6 md:tw-my-8 tw-my-8;
+      }
+      >form{
+        @apply 2xl:tw-px-20 xl:tw-px-20 lg:tw-px-8 md:tw-px-9 tw-px-9;
+        .loginBtn{
+          @apply tw-text-light tw-rounded-md tw-px-4 tw-py-2;
+          background:linear-gradient(to bottom right,#FCFFE7,#147AC9);
+          transition: all .2s ease-in-out;
+          &:hover{
+            background:linear-gradient(to bottom right,#147AC9,#FCFFE7);
+          }
+        }
+      }
+      .registerRedirect{
+        @apply tw-px-20 tw-absolute tw-bottom-6;
+        >a{
+          @apply hover:tw-cursor-pointer tw-text-logoName tw-font-medium tw-underline tw-underline-offset-2;
+        }
+      }
+    }
+  }
+}
