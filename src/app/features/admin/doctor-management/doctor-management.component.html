@@ -1,0 +1,101 @@
+<section class="doctor">
+
+  <div class="doctor_manage container">
+    <div>
+      <button class="doctor_manage_addBtn"  (click)="openXl(content)">
+        Add
+        &nbsp;
+          <fa-icon [icon]="addUser" [fixedWidth]="true"></fa-icon>
+      </button>
+      <div class="table-responsive">
+        <table class="table table-hover tw-bg-transparent">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Specialization</th>
+              <th scope="col">Clinic</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of dataTable">
+              <th scope="row">{{data.id}}</th>
+              <td>{{data.name}}</td>
+              <td>{{data.age}}</td>
+              <td>{{data.specialization}}</td>
+              <td>{{data.clinic.name}}</td>
+              <td class="d-flex">
+                <!-- <button class="doctor_manage_editBtn tw-me-3">
+                  Edit
+                  &nbsp;
+                    <fa-icon [icon]="editUser" [fixedWidth]="true"></fa-icon>
+                </button> -->
+                <button (click)="delete(data)" class="doctor_manage_deleteBtn">
+                  Delete
+                  &nbsp;
+                    <fa-icon [icon]="deleteUser" [fixedWidth]="true"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="tw-text-logoName">Add Doctors</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="addForm" (ngSubmit)="add()">
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <input type="text" formControlName="userName" class="form-control" placeholder="User Name">
+        </div>
+        <div class="col-lg-6">
+          <input type="text" formControlName="name" class="form-control" placeholder="Name">
+        </div>
+        <div class="col-lg-6">
+          <input type="email" formControlName="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="col-lg-6">
+          <input type="password" formControlName="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="col-lg-6">
+          <input type="text" formControlName="phone" class="form-control" placeholder="Phone">
+        </div>
+        <div class="col-lg-6">
+          <input type="number" formControlName="age" class="form-control" placeholder="Age">
+        </div>
+        <div class="col-lg-6">
+          <select class="form-select" formControlName="clinicId">
+            <option selected disabled [ngValue]="null">Clinic</option>
+            <option *ngFor="let clinic of clinics" [value]="clinic.id">{{clinic.name}}</option>
+          </select>
+        </div>
+        <div class="col-lg-6">
+          <select class="form-select" formControlName="role">
+            <option selected [ngValue]="null" disabled>Role</option>
+            <option value="1" *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
+          </select>
+        </div>
+        <div class="tw-text-end">
+          <button type="submit" class="doctor_manage_addBtn tw-mb-0">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>
+
+<swal #mySwal title="Added Successfully" text="" icon="success"></swal>

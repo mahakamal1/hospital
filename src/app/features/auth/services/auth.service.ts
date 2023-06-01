@@ -21,7 +21,7 @@ export class AuthService {
     return this.currentUserSubject.value
   }
   login(obj:Login){
-    return this._http.post(environment.baseUrl+'login',obj).pipe(
+    return this._http.post(environment.baseUrl+'login',obj,{responseType: 'text'}).pipe(
       map((user:any) => {
         if (user) {
           localStorage.setItem('currentClientUser', JSON.stringify(user))

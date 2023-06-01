@@ -20,12 +20,20 @@
         </li>
       </ul>
       <div class="d-flex" *ngIf="!isAdminUserLoghedIn">
-        <a class="btn loginBtn tw-me-3" [routerLink]="['/auth/login']">Login</a>
+        <a class="btn loginBtn tw-me-3" [routerLink]="['/auth/login']">
+          Login
+          &nbsp;
+          <fa-icon [icon]="login" [fixedWidth]="true"></fa-icon>
+        </a>
         <a class="btn registerBtn btn-outline-success" [routerLink]="['/auth/Register']">Register</a>
       </div>
       <div class="d-flex tw-items-baseline"*ngIf="isAdminUserLoghedIn">
         <p class="tw-me-3">Welcome Admin</p>
-        <a class="btn loginBtn tw-me-3">Logout</a>
+        <a (click)="logout()" role="button" class="btn loginBtn tw-me-3">
+          Logout
+          &nbsp;
+          <fa-icon [icon]="logoutIcon" [fixedWidth]="true"></fa-icon>
+        </a>
       </div>
     </div>
   </div>

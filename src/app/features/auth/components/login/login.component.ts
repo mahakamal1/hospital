@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit{
   login(){
     localStorage.setItem('currentClientUser','test')
     console.log(this.loginForm.value)
-    // this._authService.login(this.loginForm.value).subscribe((data)=>{
-    //   console.log(data)
+    this._authService.login(this.loginForm.value).subscribe((data)=>{
+      console.log(typeof(data))
       this._toastrService.success('Welcome Back')
       this._route.navigate(['/Admin'])
-    //})
+  })
   }
 
   ngOnInit(): void {
