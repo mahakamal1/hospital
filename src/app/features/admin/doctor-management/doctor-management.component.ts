@@ -63,7 +63,7 @@ export class DoctorManagementComponent implements OnInit {
   }
 
   add(){
-    this._doctorService.Addworkers(this.addForm.value).subscribe((data)=>{
+    this._doctorService.AddDoctor(this.addForm.value).subscribe((data)=>{
       console.log(data)
       this.mySwal.fire()
       this.getAll()

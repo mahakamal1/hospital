@@ -5,6 +5,7 @@ export interface Login{
 
 export interface RegisterPatient{
   userName: string,
+  name:string,
   email: string,
   password: string,
   phone: string

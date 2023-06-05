@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0"*ngFor="let doctorPlan of doctorPlans">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{doctorPlan.date | date }}</h5>
+          <button  class="btn btn-success" (click)="seePatients(doctorPlan.id)">See Patients</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

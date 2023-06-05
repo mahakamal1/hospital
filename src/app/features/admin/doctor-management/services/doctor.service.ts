@@ -13,8 +13,8 @@ export class DoctorService {
     private _http:HttpClient
   ) { }
 
-  Addworkers(obj:Addworkers){
-    return this._http.post(environment.baseUrl+'Addworkers',obj,{responseType:'text'})
+  AddDoctor(obj:Addworkers){
+    return this._http.post(environment.baseUrl+'AddDoctor',obj,{responseType:'text'})
   }
 
   getDoctors():Observable<Doctor[]>{

@@ -1,6 +1,6 @@
 .headerContent{
   @apply tw-grid
-  2xl:tw-grid-cols-5 2xl:tw-py-5
+  2xl:tw-grid-cols-5 2xl:tw-py-20
   xl:tw-grid-cols-5 xl:tw-py-20;
   &_headerImage{
     @apply 2xl:tw-col-span-2 xl:tw-col-span-2;

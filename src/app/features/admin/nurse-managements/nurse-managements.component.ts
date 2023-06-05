@@ -34,7 +34,6 @@ export class NurseManagementsComponent implements OnInit {
     private _modalService: NgbModal,
     private _fb:FormBuilder,
     private _toastrService:ToastrService,
-    private _doctorService:DoctorService
   ) {
 
   }
@@ -65,7 +64,7 @@ export class NurseManagementsComponent implements OnInit {
   }
 
   add(){
-    this._doctorService.Addworkers(this.addForm.value).subscribe((data)=>{
+    this._nurseService.AddNurse(this.addForm.value).subscribe((data)=>{
       console.log(data)
       this.mySwal.fire()
       this.getAll()

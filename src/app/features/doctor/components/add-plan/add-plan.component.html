@@ -1,0 +1,19 @@
+<div class="container">
+  <form class="row g-3" [formGroup]="addPlanForm" (ngSubmit)="add()">
+    <div class="col-md-4">
+      <label for="date" class="form-label">Select Day</label>
+      <input type="date" class="form-control" id="date" formControlName="date">
+    </div>
+    <div class="col-md-3">
+      <label for="From" class="form-label">From</label>
+      <input type="time" class="form-control" id="From"  formControlName="from">
+    </div>
+    <div class="col-md-3">
+      <label for="to" class="form-label">to</label>
+      <input type="time" class="form-control" id="to"  formControlName="to">
+    </div>
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-success">Add</button>
+    </div>
+  </form>
+</div>

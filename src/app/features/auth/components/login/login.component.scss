@@ -13,7 +13,7 @@
   &_form{
     @apply tw-col-span-1 tw-relative;
     &_top{
-      @apply tw-w-full tw-flex tw-flex-col tw-align-middle tw-content-center;
+      @apply tw-w-full tw-h-full tw-flex tw-flex-col tw-align-middle tw-content-center;
       &_logoContainer{
         @apply 2xl:tw-mt-5 xl:tw-mt-14 lg:tw-mt-16 md:tw-mt-20 tw-mt-16 tw-flex tw-w-fit tw-mx-auto tw-content-center tw-items-center;
       >img{
