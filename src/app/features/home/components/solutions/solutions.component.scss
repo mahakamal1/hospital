@@ -1,0 +1,59 @@
+
+
+.card {
+  border: none;
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+  &:hover{
+    @apply tw-bg-gray-200 tw-cursor-pointer;
+  }
+}
+
+.c-details span {
+  font-weight: 300;
+  font-size: 13px
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  background-color: #FF731D;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color:#fff;
+}
+
+.icon1{
+  @apply tw-bg-logoName;
+}
+.icon2{
+  @apply tw-bg-yellow-300;
+}
+.icon3{
+  @apply tw-bg-green;
+}
+.badge span {
+  background-color: #fffbec;
+  width: 60px;
+  height: 25px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: #fed85d;
+  justify-content: center;
+  align-items: center
+}
+
+
+
+.text1 {
+  font-size: 14px;
+  font-weight: 600
+}
+
+.text2 {
+  color: #a5aec0
+}

@@ -1,0 +1,52 @@
+.headerContent{
+  @apply tw-grid
+  2xl:tw-grid-cols-5 2xl:tw-py-5
+  xl:tw-grid-cols-5 xl:tw-py-20;
+  &_headerImage{
+    @apply 2xl:tw-col-span-2 xl:tw-col-span-2;
+    &_container{
+      @apply  xl:tw-bg-logoName xl:tw-h-72
+      xl:tw-rounded-tl-3xl
+      xl:tw-rounded-br-3xl
+      tw-w-72 tw-mx-auto tw-relative;
+      >img{
+        @apply tw-object-cover
+        xl:tw-rounded-tl-3xl xl:tw-h-72
+        xl:tw-rounded-br-3xl
+        xl:tw-absolute xl:-tw-left-5 xl:-tw-top-5;
+      }
+    }
+  }
+  &_textContent{
+    @apply 2xl:tw-col-span-3 xl:tw-col-span-3;
+    h1{
+      @apply tw-font-bold tw-leading-normal;
+      >span{
+        @apply tw-text-logoName;
+      }
+    }
+    p{
+      @apply tw-text-gray-400 tw-my-2;
+    }
+    .contactUsBtn{
+      @apply tw-bg-logoName tw-border
+      tw-border-logoName tw-text-white tw-ease-in-out
+      hover:tw-bg-transparent hover:tw-text-logoName
+      2xl:tw-py-2 2xl:tw-px-6  2xl:tw-my-3 2xl:tw-rounded-lg
+      xl:tw-py-1.5 xl:tw-px-6 xl:tw-my-3 xl:tw-rounded-md;
+    }
+    .services{
+      @apply tw-w-full tw-bg-logoName tw-rounded-lg tw-grid tw-grid-cols-3
+      2xl:tw-p-10 xl:tw-p-8 2xl:tw-mt-10 xl:tw-mt-4;
+      div{
+        @apply tw-col-span-1 tw-flex tw-flex-col tw-items-center;
+        >h3{
+          @apply tw-font-medium tw-text-white;
+        }
+        >p{
+          @apply tw-text-white;
+        }
+      }
+    }
+  }
+}

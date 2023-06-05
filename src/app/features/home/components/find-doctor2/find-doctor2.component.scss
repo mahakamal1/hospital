@@ -1,0 +1,8 @@
+.imageConatiner{
+  @apply  tw-rounded-r-full tw-bg-logoName
+  2xl:tw-w-3/4 xl:tw-w-3/4 tw-overflow-hidden ;
+}
+.ScheduleNowBtn{
+  @apply tw-text-white tw-bg-logoName tw-rounded-md
+  xl:tw-py-1.5 xl:tw-px-6;
+}

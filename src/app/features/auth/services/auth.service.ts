@@ -36,9 +36,12 @@ export class AuthService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentClientUser')
     this.currentUserSubject.next(null!)
+    location.reload()
   }
 
   register(obj:RegisterPatient){
-    return this._http.post(environment.baseUrl+'register',obj)
+    return this._http.post(environment.baseUrl+'register',obj,{
+      responseType:'text'
+    })
   }
 }
