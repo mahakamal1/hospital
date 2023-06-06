@@ -13,6 +13,7 @@ export class AddPlanComponent implements OnInit{
   addPlanForm!:FormGroup
    token = this._jwtService.DecodeToken(String(localStorage.getItem('currentClientUser')))
    id = this.token['UserId']
+   today=new Date()
   constructor(
     private _doctorService:DoctorService,
     private _jwtService:JwtDecodeService,

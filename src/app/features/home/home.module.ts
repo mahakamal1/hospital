@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { CarouselModule } from 'primeng/carousel';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,7 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FindDoctorComponent } from './components/find-doctor/find-doctor.component';
 import { FindDoctor2Component } from './components/find-doctor2/find-doctor2.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClinicsComponent } from './components/clinics/clinics.component';
+import { ClinicDetailsComponent } from './components/clinic-details/clinic-details.component';
 
 
 @NgModule({
@@ -19,13 +20,15 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
     SolutionsComponent,
     FindDoctorComponent,
     FindDoctor2Component,
-    ReviewsComponent
+    ReviewsComponent,
+    ClinicsComponent,
+    ClinicDetailsComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FontAwesomeModule,
-    NgbCarouselModule
+    CarouselModule
   ],
   providers:[
 

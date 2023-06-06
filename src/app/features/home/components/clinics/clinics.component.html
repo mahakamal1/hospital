@@ -1,0 +1,25 @@
+<div class="container tw-py-8">
+  <h4 class="tw-text-logoName text-center">Clinics</h4>
+  <p class="tw-text-center tw-text-gray-400 col-lg-9 tw-mx-auto">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt accusamus optio minima ratione sit tempora esse ab illum facilis asperiores? Quos voluptatum aspernatur alias nostrum delectus aperiam, illo autem qui.</p>
+  <div class="my-5">
+      <p-carousel [value]="clinicsArr" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+          <ng-template let-clinic pTemplate="item">
+              <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                  <div class="mb-3">
+                      <img src="assets/Images/clinic.png" class="tw-w-14 d-block shadow-2 tw-mx-auto" />
+                  </div>
+                  <div>
+                      <h4 class="mb-1">{{ clinic.name }}</h4>
+                      <h6 class="mt-0 mb-3"></h6>
+                      <div class="car-buttons mt-5">
+                        <a class="doctorBtn" [routerLink]="['/Home/clinic',clinic.id]">
+                          <fa-icon [icon]="eye" [fixedWidth]="true"></fa-icon>
+                          View Doctor
+                        </a>
+                      </div>
+                  </div>
+              </div>
+          </ng-template>
+      </p-carousel>
+  </div>
+</div>

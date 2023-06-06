@@ -1,0 +1,10 @@
+.doctorBtn{
+  @apply tw-no-underline tw-text-light tw-bg-logoName tw-border
+  tw-border-logoName tw-rounded-lg tw-transition-all tw-ease-out
+  2xl:tw-px-6 2xl:tw-py-2
+  xl:tw-px-6 xl:tw-py-2
+  lg:tw-px-5 lg:tw-py-1.5
+  md:tw-px-5 md:tw-py-1.5
+  tw-px-4 tw-py-1
+  hover:tw-bg-transparent hover:tw-text-logoName;
+}

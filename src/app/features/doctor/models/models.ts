@@ -49,3 +49,8 @@ export interface patientPlan{
   email: string,
   phone: string
 }
+
+export interface getCurrentPlanPatient{
+  name:string,
+  status: string
+}

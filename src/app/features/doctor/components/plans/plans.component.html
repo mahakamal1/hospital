@@ -1,13 +1,106 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0"*ngFor="let doctorPlan of doctorPlans">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{doctorPlan.date | date }}</h5>
-          <button  class="btn btn-success" (click)="seePatients(doctorPlan.id)">See Patients</button>
-        </div>
-      </div>
-    </div>
-
+<div class="my-5">
+  <div class="text-end">
+    <a class="btn btn-dark"[routerLink]="['/doctor/editProfile']">Edit Information</a>
   </div>
+  <table class="table">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Clinic</th>
+        <td>{{doctorData.clinic.name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Specialization</th>
+        <td>{{doctorData.specialization}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td>{{doctorData.description}}</td>
+      </tr>
+      <tr>
+        <th scope="row">About</th>
+        <td>{{doctorData.about}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+ <div class="mt-5">
+  <p-carousel [value]="doctorPlans" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions">
+    <ng-template let-doctorPlan pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div class="mb-3 tw-text-2xl">
+              <fa-icon [icon]="calender"></fa-icon>
+            </div>
+            <div>
+                <h4 class="mb-1">{{doctorPlan.date | date }}</h4>
+                <p class="mb-1">{{doctorPlan.from }} : {{doctorPlan.to}}</p>
+                <div class="car-buttons mt-5">
+                  <button class="seePatient" (click)="openLg(content,doctorPlan.id,doctorPlan.date)">
+                    <fa-icon [icon]="eye" [fixedWidth]="true"></fa-icon>
+                    See Patients
+                  </button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+  </p-carousel>
+ </div>
+ <div class="my-5">
+  <h5 class="tw-text-logoName">Today's Patients</h5>
+  <table class="table table-hover"  *ngIf="getCurrentPlanPatient.length!=0">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of getCurrentPlanPatient">
+        <td>{{patient.name}}</td>
+        <td>
+          <span class="badge tw-bg-green">
+            {{patient.status}}
+          </span>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ </div>
+</div>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">{{modaltitle}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <div class="text-center" *ngIf="patientPlan.length==0">
+      <p class="tw-text-deleteColor">
+        There are no reservations yet
+      </p>
+    </div>
+    <table class="table table-hover"  *ngIf="patientPlan.length!=0">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patientPlan">
+          <td>{{patient.name}}</td>
+          <td>{{patient.age}}</td>
+          <td>{{patient.email}}</td>
+          <td>{{patient.phone}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>

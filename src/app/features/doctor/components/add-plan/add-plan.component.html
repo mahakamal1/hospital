@@ -1,19 +1,30 @@
+
+
+
 <div class="container">
-  <form class="row g-3" [formGroup]="addPlanForm" (ngSubmit)="add()">
-    <div class="col-md-4">
-      <label for="date" class="form-label">Select Day</label>
-      <input type="date" class="form-control" id="date" formControlName="date">
+  <div class="row g-3">
+    <div class="col-xl-6 p-4 tw-flex tw-flex-col tw-justify-center">
+      <h2 class="mb-5 tw-text-editColor tw-underline">Add Plan</h2>
+      <form class="row g-3" [formGroup]="addPlanForm" (ngSubmit)="add()">
+        <div>
+          <label for="date" class="form-label">Select Day</label>
+          <input type="date" [min]="today | date : 'yyyy-MM-dd'" class="form-control" id="date" formControlName="date">
+        </div>
+        <div>
+          <label for="From" class="form-label">From</label>
+          <input type="time" class="form-control" id="From"  formControlName="from">
+        </div>
+        <div>
+          <label for="to" class="form-label">to</label>
+          <input type="time" class="form-control" id="to"  formControlName="to">
+        </div>
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
     </div>
-    <div class="col-md-3">
-      <label for="From" class="form-label">From</label>
-      <input type="time" class="form-control" id="From"  formControlName="from">
+    <div class="col-xl-6">
+      <img src="assets/Images/addPlan.jpg">
     </div>
-    <div class="col-md-3">
-      <label for="to" class="form-label">to</label>
-      <input type="time" class="form-control" id="to"  formControlName="to">
-    </div>
-    <div class="col-12 text-end">
-      <button type="submit" class="btn btn-success">Add</button>
-    </div>
-  </form>
+  </div>
 </div>

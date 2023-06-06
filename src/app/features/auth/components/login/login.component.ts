@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { JwtDecodeService } from 'src/app/core/services/jwt-decode.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit{
     private _authService:AuthService,
     private _fb:FormBuilder,
     private _toastrService:ToastrService,
-    private _route:Router
+    private _route:Router,
+    private _jwtService:JwtDecodeService,
   ) {
   }
 
@@ -28,12 +30,19 @@ export class LoginComponent implements OnInit{
   }
 
   login(){
-    localStorage.setItem('currentClientUser','test')
-    console.log(this.loginForm.value)
     this._authService.login(this.loginForm.value).subscribe((data)=>{
-      console.log(typeof(data))
       this._toastrService.success('Welcome Back')
-      this._route.navigate(['/Admin'])
+      let token = this._jwtService.DecodeToken(String(localStorage.getItem('currentClientUser')))
+      let role = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      if(role=='Admin'){
+        this._route.navigate(['/Admin'])
+      }else if(role=='Doctor'){
+        this._route.navigate(['/doctor/plans'])
+      }else if(role=='Patient'){
+        this._route.navigate(['/'])
+      }else if(role=='Nurse'){
+        this._route.navigate(['/nurse'])
+      }
   })
   }
 

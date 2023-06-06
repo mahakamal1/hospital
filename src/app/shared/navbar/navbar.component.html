@@ -27,8 +27,18 @@
         </a>
         <a class="btn registerBtn btn-outline-success" [routerLink]="['/auth/Register']">Register</a>
       </div>
+      <div ngbDropdown class="d-inline-block me-3" *ngIf="isAdminUserLoghedIn">
+        <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+          Welcome {{name}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Nurse' || this.token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Doctor'|| this.token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Admin'">
+          <button ngbDropdownItem (click)="viewProfile()" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Doctor'">Profile</button>
+          <button ngbDropdownItem (click)="editProfile()" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']!=='Admin'">Edit Profile</button>
+          <button ngbDropdownItem (click)="changePassword()">Change Password</button>
+          <button ngbDropdownItem (click)="addPlans()" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Doctor'">Add Plans</button>
+        </div>
+      </div>
       <div class="d-flex tw-items-baseline"*ngIf="isAdminUserLoghedIn">
-        <p class="tw-me-3">Welcome Admin</p>
         <a (click)="logout()" role="button" class="btn loginBtn tw-me-3">
           Logout
           &nbsp;
