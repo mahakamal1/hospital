@@ -1,3 +1,53 @@
 <div class="container">
+  <div class="my-5">
+    <h5 class="tw-text-logoName">Doctor Details</h5>
+    <table class="table table-hover"  *ngIf="doctorsData">
 
+      <tbody>
+        <tr>
+          <th scope="row"> Name :</th>
+          <td>{{doctorsData.name}}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-nowrap">Specialization :</th>
+          <td>{{doctorsData.specialization}}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Description :</th>
+          <td>{{doctorsData.description}}</td>
+        </tr>
+        <tr>
+          <th scope="row"> About :</th>
+          <td>{{doctorsData.about}}</td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+   <div class="my-5">
+    <h5 class="tw-text-logoName">Available Appointments</h5>
+    <div class="mt-5">
+      <p-carousel [value]="doctorPlans" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions">
+        <ng-template let-doctorPlan pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                <div class="mb-3 tw-text-2xl">
+                  <fa-icon [icon]="calender"></fa-icon>
+                </div>
+                <div>
+                    <h4 class="mb-1">{{doctorPlan.date | date }}</h4>
+                    <p class="mb-1">{{doctorPlan.from }} : {{doctorPlan.to}}</p>
+                    <div class="car-buttons mt-5">
+                      <button class="seePatient" (click)="book(doctorPlan.id)">
+                        <fa-icon [icon]="eye" [fixedWidth]="true"></fa-icon>
+                        Book
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+      </p-carousel>
+     </div>
+   </div>
 </div>
+
+
+<swal #mySwal title="reserved Successfully" text="" icon="success"></swal>

@@ -11,3 +11,8 @@ export interface getClinicdoctor{
   about: string,
   clinicId: number
 }
+
+export interface Reserve{
+  planId: number,
+  patientId: number
+}

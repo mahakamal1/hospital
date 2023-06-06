@@ -11,6 +11,7 @@ import { FindDoctor2Component } from './components/find-doctor2/find-doctor2.com
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { ClinicsComponent } from './components/clinics/clinics.component';
 import { ClinicDetailsComponent } from './components/clinic-details/clinic-details.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ClinicDetailsComponent } from './components/clinic-details/clinic-detai
     CommonModule,
     HomeRoutingModule,
     FontAwesomeModule,
-    CarouselModule
+    CarouselModule,
+    SweetAlert2Module
   ],
   providers:[
 

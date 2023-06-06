@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { getClinicdoctor } from '../models/models';
+import { Reserve, getClinicdoctor } from '../models/models';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -17,4 +17,9 @@ export class HomeService {
       }
     })
   }
+
+  reservation(obj:Reserve){
+    return this._http.post(environment.baseUrl+'api/Reservation/reservation',obj)
+  }
+
 }
