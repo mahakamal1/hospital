@@ -1,0 +1,13 @@
+<div class="container tw-h-screen py-5">
+  <h2 class="tw-text-editColor my-5">Your Reservation</h2>
+  <div class="row g-3 my-5">
+    <div class="col-lg-4" *ngFor="let reserve of reservationArr">
+      <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{reserve.date | date}}</div>
+        <div class="card-body">
+          <p class="card-text">Doctor : {{reserve.doctorname}}</p>
+          <p class="card-text">clinic : {{reserve.clinic}}</p>        </div>
+      </div>
+    </div>
+  </div>
+</div>

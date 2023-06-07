@@ -6,6 +6,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { ToastrService } from 'ngx-toastr';
+import { clinic } from 'src/app/core/models/models';
+import { CoreService } from 'src/app/core/services/core.service';
 
 @Component({
   selector: 'app-doctor-management',
@@ -20,20 +22,14 @@ export class DoctorManagementComponent implements OnInit {
   public readonly mySwal!: SwalComponent;
   dataTable:Doctor[] = []
   addForm!:FormGroup
-  roles=[
-    {id:1,name:'doctor'},
-    {id:2,name:'nurse'}
-  ]
-  clinics=[
-    {id:1,name:'Test'},
-    {id:2,name:'Test2'}
-  ]
+  clinics!:clinic[]
 
   constructor(
     private _doctorService:DoctorService,
     private _modalService: NgbModal,
     private _fb:FormBuilder,
-    private _toastrService:ToastrService
+    private _toastrService:ToastrService,
+    private _coreService:CoreService
   ) {
 
   }
@@ -49,6 +45,12 @@ export class DoctorManagementComponent implements OnInit {
     })
   }
 
+  getClinics(){
+    this._coreService.getClinic().subscribe((data)=>{
+      this.clinics = data
+    })
+  }
+
   createAddForm(){
     this.addForm = this._fb.group({
       userName:[,Validators.required],
@@ -56,7 +58,7 @@ export class DoctorManagementComponent implements OnInit {
       email:[,[Validators.required]],
       password:[,[Validators.required]],
       phone:[,[Validators.required]],
-      role:[,[Validators.required]],
+      role:['doctor',[Validators.required]],
       age:[,[Validators.required]],
       clinicId:[,[Validators.required]]
     })
@@ -79,6 +81,7 @@ export class DoctorManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll()
+    this.getClinics()
   }
 
 }

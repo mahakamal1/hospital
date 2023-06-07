@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit{
   logoutIcon=faArrowRightFromBracket
   name!:string
   token!:any
+  role!:string
   constructor(
     private _authService:AuthService,
     private _router:Router,
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit{
   ) {
     if(localStorage.getItem('currentClientUser')){
       this.token  = this._jwtServices.DecodeToken(String(localStorage.getItem('currentClientUser')));
+      this.role = this.token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
     }
     else{
       this.token = ''
@@ -68,6 +70,14 @@ export class NavbarComponent implements OnInit{
   logout(){
     this._authService.logout()
     this._router.navigate(['/'])
+  }
+
+  viewReservation(){
+    this._router.navigate(['/user/userReservation'])
+  }
+
+  viewCurrentReservation(){
+    this._router.navigate(['/nurse/currentPatients'])
   }
 
   ngOnInit(): void {

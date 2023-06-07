@@ -44,7 +44,7 @@
 </section>
 <ng-template #content let-modal>
 	<div class="modal-header">
-		<h4 class="tw-text-logoName">Add Doctors</h4>
+		<h4 class="tw-text-logoName">Add Nurse</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
@@ -72,12 +72,6 @@
           <select class="form-select" formControlName="clinicId">
             <option selected disabled [ngValue]="null">Clinic</option>
             <option *ngFor="let clinic of clinics" [value]="clinic.id">{{clinic.name}}</option>
-          </select>
-        </div>
-        <div class="col-lg-6">
-          <select class="form-select" formControlName="role">
-            <option selected [ngValue]="null" disabled>Role</option>
-            <option  *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
           </select>
         </div>
         <div class="tw-text-end">

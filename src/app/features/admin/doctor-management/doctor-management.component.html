@@ -79,12 +79,6 @@
             <option *ngFor="let clinic of clinics" [value]="clinic.id">{{clinic.name}}</option>
           </select>
         </div>
-        <div class="col-lg-6">
-          <select class="form-select" formControlName="role">
-            <option selected [ngValue]="null" disabled>Role</option>
-            <option value="1" *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
-          </select>
-        </div>
         <div class="tw-text-end">
           <button type="submit" class="doctor_manage_addBtn tw-mb-0">
             Add

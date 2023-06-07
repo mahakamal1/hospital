@@ -56,6 +56,9 @@ export class ClinicDetailsComponent implements OnInit{
         }
         this._homeService.reservation(obj).subscribe((data)=>{
           this.mySwal.fire()
+          setTimeout(()=>{
+            this._router.navigate(['/user/userReservation'])
+          },2000)
         })
       }
     }else{

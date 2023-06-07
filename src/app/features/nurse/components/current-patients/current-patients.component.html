@@ -1,0 +1,29 @@
+<div class="container tw-h-screen py-5">
+  <h2 class="my-5 tw-text-editColor">Current Patients</h2>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let current of currentReservation">
+        <td>{{current.name}}</td>
+        <td>
+          <span  class="badge " [ngClass]="current.status==='Arrival' ? 'tw-bg-green':'tw-bg-editColor'">
+            {{current.status}}
+          </span>
+        </td>
+        <td>
+          <button [disabled]="current.status === 'Arrival'" (click)="arrived(current.reservationid)" class="btnArrived">
+            Arrived
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<swal #mySwal title="Status Changed Successfully" text="" icon="success"></swal>

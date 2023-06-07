@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { nurse } from '../models/models';
+import { currentReservation, nurse } from '../models/models';
 import { environment } from 'src/environments/environment.prod';
 import { Observable } from 'rxjs';
 import { changePassword } from 'src/app/core/models/models';
@@ -28,5 +28,21 @@ export class NurseService {
 
   editProfile(obj:nurse){
     return this._http.put(environment.baseUrl+'api/Nurse',obj)
+  }
+
+  getCurrentPatient(nurseid:number):Observable<currentReservation[]>{
+    return this._http.get<currentReservation[]>(environment.baseUrl+'api/Nurse/GetCurrentPatient',{
+      params:{
+        nurseid:nurseid
+      }
+    })
+  }
+
+  Arrives(reservatioid:number){
+    return this._http.put(environment.baseUrl+'api/Nurse/ArrivalPatient',{},{
+      params:{
+        reservatioid:reservatioid
+      }
+    })
   }
 }

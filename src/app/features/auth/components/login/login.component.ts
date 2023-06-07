@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit{
       }else if(role=='Patient'){
         this._route.navigate(['/'])
       }else if(role=='Nurse'){
-        this._route.navigate(['/nurse'])
+        this._route.navigate(['/nurse/currentPatients'])
       }
   })
   }

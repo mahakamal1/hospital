@@ -15,3 +15,9 @@ export interface nurse{
     name: string
   }
 }
+
+export interface currentReservation{
+  reservationid: number,
+  name: string,
+  status: string
+}

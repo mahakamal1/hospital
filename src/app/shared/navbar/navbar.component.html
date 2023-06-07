@@ -5,18 +5,18 @@
     </button>
     <a class="navbar-brand logo">
       <img src="assets/Images/logo.png" class="logo_img">
-      <a class="logo_text">Ultra Care House</a>
+      <a class="logo_text" [routerLink]="['/Home']">Ultra Care House</a>
     </a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" [routerLink]="['/Home']" [routerLinkActive]="'active'">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link"[routerLink]="" [routerLinkActive]="'active'">ContactUs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link"[routerLink]="" [routerLinkActive]="'active'">AboutUs</a>
         </li>
       </ul>
       <div class="d-flex" *ngIf="!isAdminUserLoghedIn">
@@ -31,11 +31,15 @@
         <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
           Welcome {{name}}
         </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Nurse' || this.token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Doctor'|| this.token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Admin'">
-          <button ngbDropdownItem (click)="viewProfile()" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Doctor'">Profile</button>
-          <button ngbDropdownItem (click)="editProfile()" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']!=='Admin'">Edit Profile</button>
-          <button ngbDropdownItem (click)="changePassword()">Change Password</button>
-          <button ngbDropdownItem (click)="addPlans()" *ngIf="token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']==='Doctor'">Add Plans</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="role">
+          <button ngbDropdownItem (click)="viewProfile()" *ngIf="role==='Doctor'">Profile</button>
+          <ng-container  *ngIf="role!=='Admin'">
+            <button ngbDropdownItem (click)="editProfile()" *ngIf="role!=='Patient'">Edit Profile</button>
+          </ng-container>
+          <button ngbDropdownItem (click)="changePassword()"*ngIf="role!=='Patient'">Change Password</button>
+          <button ngbDropdownItem (click)="addPlans()" *ngIf="role==='Doctor'">Add Plans</button>
+          <button ngbDropdownItem (click)="viewReservation()" *ngIf="role==='Patient'">View Reservations</button>
+          <button ngbDropdownItem (click)="viewCurrentReservation()" *ngIf="role==='Nurse'">View Current Reservations</button>
         </div>
       </div>
       <div class="d-flex tw-items-baseline"*ngIf="isAdminUserLoghedIn">

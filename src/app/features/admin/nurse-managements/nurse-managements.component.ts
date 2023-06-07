@@ -1,3 +1,4 @@
+import { clinic } from './../../../core/models/models';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faUserPlus, faUserPen, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { nurse } from './models/model';
@@ -7,6 +8,7 @@ import { NurseService } from './services/nurse.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from '../doctor-management/services/doctor.service';
+import { CoreService } from 'src/app/core/services/core.service';
 
 @Component({
   selector: 'app-nurse-managements',
@@ -25,15 +27,13 @@ export class NurseManagementsComponent implements OnInit {
     {id:1,name:'doctor'},
     {id:2,name:'nurse'}
   ]
-  clinics=[
-    {id:1,name:'Test'},
-    {id:2,name:'Test2'}
-  ]
+  clinics!:clinic[]
   constructor(
     private _nurseService:NurseService,
     private _modalService: NgbModal,
     private _fb:FormBuilder,
     private _toastrService:ToastrService,
+    private _coreService:CoreService
   ) {
 
   }
@@ -50,7 +50,7 @@ export class NurseManagementsComponent implements OnInit {
       email:[,[Validators.required]],
       password:[,[Validators.required]],
       phone:[,[Validators.required]],
-      role:[,[Validators.required]],
+      role:['nurse',[Validators.required]],
       age:[,[Validators.required]],
       clinicId:[,[Validators.required]]
     })
@@ -78,7 +78,14 @@ export class NurseManagementsComponent implements OnInit {
     })
   }
 
+  getClinics(){
+    this._coreService.getClinic().subscribe((data)=>{
+      this.clinics = data
+    })
+  }
+
   ngOnInit(): void {
     this.getAll()
+    this.getClinics()
   }
 }
