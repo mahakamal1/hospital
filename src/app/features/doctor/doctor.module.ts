@@ -10,6 +10,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { PlansComponent } from './components/plans/plans.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DoctorRoutingModule,
     ReactiveFormsModule,
     CarouselModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SweetAlert2Module
   ]
 })
 export class DoctorModule { }

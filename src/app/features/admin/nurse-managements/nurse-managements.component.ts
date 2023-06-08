@@ -23,10 +23,6 @@ export class NurseManagementsComponent implements OnInit {
   public readonly mySwal!: SwalComponent;
   dataTable:nurse[] = []
   addForm!:FormGroup
-  roles=[
-    {id:1,name:'doctor'},
-    {id:2,name:'nurse'}
-  ]
   clinics!:clinic[]
   constructor(
     private _nurseService:NurseService,
@@ -45,10 +41,10 @@ export class NurseManagementsComponent implements OnInit {
 
   createAddForm(){
     this.addForm = this._fb.group({
-      userName:[,Validators.required],
-      name:[,[Validators.required]],
-      email:[,[Validators.required]],
-      password:[,[Validators.required]],
+      userName:[,Validators.required,Validators.minLength(4)],
+      name:[,[Validators.required,Validators.minLength(4)]],
+      email:[,[Validators.required,Validators.email]],
+      password:[,[Validators.required,Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
       phone:[,[Validators.required]],
       role:['nurse',[Validators.required]],
       age:[,[Validators.required]],
@@ -61,6 +57,10 @@ export class NurseManagementsComponent implements OnInit {
     this._nurseService.getNurses().subscribe((data)=>{
       this.dataTable = data
     })
+  }
+
+  get f(){
+    return this.addForm.controls;
   }
 
   add(){

@@ -23,12 +23,17 @@ export class RegisterComponent implements OnInit{
 
   createform(){
     this.registerForm = this._fb.group({
-      userName:[,[Validators.required]],
-      name:[,[Validators.required]],
-      email:[,[Validators.required]],
-      password:[,[Validators.required]],
-      phone:[,[Validators.required]]
+      userName:[,[Validators.required,Validators.minLength(4)]],
+      name:[,[Validators.required,Validators.minLength(4)]],
+      email:[,[Validators.required,Validators.email]],
+      password:[,[Validators.required,Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
+      phone:[,[Validators.required]],
+      age:[,[Validators.required]]
     })
+  }
+
+  get f(){
+    return this.registerForm.controls;
   }
 
   register(){

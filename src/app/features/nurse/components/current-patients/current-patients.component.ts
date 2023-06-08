@@ -11,6 +11,7 @@ import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 })
 export class CurrentPatientsComponent implements OnInit {
   currentReservation!:currentReservation[]
+  currentArrivalReservation!:currentReservation[]
   @ViewChild('mySwal')
   public readonly mySwal!: SwalComponent;
   constructor(
@@ -26,6 +27,9 @@ export class CurrentPatientsComponent implements OnInit {
     this._nurseService.getCurrentPatient(id).subscribe((data)=>{
       this.currentReservation = data
     })
+    this._nurseService.GetCurrentPatientArrival(id).subscribe((data)=>{
+      this.currentArrivalReservation = data
+    })
   }
 
   arrived(reservatioid:number){
@@ -36,6 +40,8 @@ export class CurrentPatientsComponent implements OnInit {
 
     })
   }
+
+
 
   ngOnInit(): void {
     this.getCurrentReservation()

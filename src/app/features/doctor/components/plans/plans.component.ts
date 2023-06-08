@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DoctorService } from '../../services/doctor.service';
 import { JwtDecodeService } from 'src/app/core/services/jwt-decode.service';
 import { getById, getCurrentPlanPatient, getDoctorPlans, patientPlan } from '../../models/models';
 import { faCalendarDays, faEye } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-plans',
@@ -11,6 +12,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./plans.component.scss']
 })
 export class PlansComponent implements OnInit{
+  @ViewChild('mySwal')
+  public readonly mySwal!: SwalComponent;
   doctorPlans!:getDoctorPlans[]
   token = this._jwtService.DecodeToken(String(localStorage.getItem('currentClientUser')))
   id = this.token['UserId']
@@ -35,6 +38,15 @@ export class PlansComponent implements OnInit{
     this._doctorServices.getDoctorPlans(this.id).subscribe((data)=>{
       this.doctorPlans = data
       console.log(data)
+    })
+  }
+
+  arrived(reservatioid:number){
+    this._doctorServices.arrivalPatient(reservatioid).subscribe((data)=>{
+      console.log(data)
+      this.mySwal.fire()
+      this.getUserData()
+
     })
   }
 

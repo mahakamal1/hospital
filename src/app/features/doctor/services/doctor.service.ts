@@ -57,4 +57,12 @@ export class DoctorService {
       }
     })
   }
+
+  arrivalPatient(reservatioid:number){
+    return this._http.put(environment.baseUrl+'api/Nurse/ArrivalPatient',{},{
+      params:{
+        reservatioid:reservatioid
+      }
+    })
+  }
 }

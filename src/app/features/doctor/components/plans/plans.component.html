@@ -49,21 +49,26 @@
  </div>
  <div class="my-5">
   <h5 class="tw-text-logoName">Today's Patients</h5>
-  <table class="table table-hover"  *ngIf="getCurrentPlanPatient.length!=0">
+  <table class="table table-hover align-middle"  *ngIf="getCurrentPlanPatient.length!=0">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let patient of getCurrentPlanPatient">
         <td>{{patient.name}}</td>
         <td>
-          <span class="badge tw-bg-green">
+           <span class="badge tw-bg-editColor">
             {{patient.status}}
-          </span>
-
+           </span>
+        </td>
+        <td>
+          <button class="btnArrived" (click)="arrived(patient.reservation)">
+            Update Status
+          </button>
         </td>
       </tr>
     </tbody>
@@ -104,3 +109,7 @@
 		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
 	</div>
 </ng-template>
+
+
+
+<swal #mySwal title="Status Changed Successfully" text="" icon="success"></swal>

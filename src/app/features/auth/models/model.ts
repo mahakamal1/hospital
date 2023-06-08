@@ -8,7 +8,8 @@ export interface RegisterPatient{
   name:string,
   email: string,
   password: string,
-  phone: string
+  phone: string,
+  age: number
 }
 
 

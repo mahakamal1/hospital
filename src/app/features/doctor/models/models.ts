@@ -52,5 +52,6 @@ export interface patientPlan{
 
 export interface getCurrentPlanPatient{
   name:string,
-  status: string
+  status: string,
+  reservation:number
 }

@@ -8,3 +8,15 @@
   tw-px-4 tw-py-1
   hover:tw-bg-transparent hover:tw-text-editColor;
 }
+
+
+.btnArrived{
+  @apply  tw-text-light tw-bg-green tw-border
+  tw-border-green tw-rounded-lg tw-transition-all tw-ease-out
+  2xl:tw-px-6 2xl:tw-py-2
+  xl:tw-px-6 xl:tw-py-2
+  lg:tw-px-5 lg:tw-py-1.5
+  md:tw-px-5 md:tw-py-1.5
+  tw-px-4 tw-py-1
+  hover:tw-bg-transparent hover:tw-text-green disabled:tw-bg-gray-400 disabled:tw-border-gray-400 disabled:tw-text-white;
+}

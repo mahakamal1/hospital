@@ -6,23 +6,52 @@
         <div class="col-md-12">
           <label for="name" class="form-label">Name</label>
           <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+          <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
+              class="alert alert-danger mt-2">
+            <div *ngIf="f.name.errors?.['required']">
+              Name is Required.
+            </div>
+          </div>
         </div>
         <div class="col-md-12">
           <label for="age" class="form-label">Age</label>
           <input type="number" class="form-control" id="age" placeholder="Age" formControlName="age">
+          <div *ngIf="f.age.invalid && (f.age.dirty || f.age.touched)"
+          class="alert alert-danger mt-2">
+        <div *ngIf="f.age.errors?.['required']">
+          Age is Required.
+        </div>
+      </div>
         </div>
         <div class="col-md-12">
           <label for="Description" class="form-label">Description</label>
           <input type="text" class="form-control" id="Description" placeholder="Description" formControlName="description">
+          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="f.description.errors?.['required']">
+              Description is Required.
+            </div>
+          </div>
         </div>
         <div class="col-md-12">
           <label for="Specialization" class="form-label">Specialization</label>
           <input type="text" class="form-control" id="Specialization" placeholder="Specialization" formControlName="specialization">
+          <div *ngIf="f.specialization.invalid && (f.specialization.dirty || f.description.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="f.specialization.errors?.['required']">
+              Specialization is Required.
+            </div>
+          </div>
         </div>
         <div class="col-md-12">
           <label for="About" class="form-label">About</label>
           <textarea class="form-control" id="About" placeholder="About" formControlName="about" rows="3"></textarea>
-
+          <div *ngIf="f.about.invalid && (f.about.dirty || f.about.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="f.about.errors?.['required']">
+              About is Required.
+            </div>
+          </div>
         </div>
         <div class="col-12 text-end">
           <button type="submit" class="btn btn-primary">Update</button>

@@ -33,6 +33,10 @@ export class EditProfileComponent implements OnInit{
     })
   }
 
+  get f(){
+    return this.editForm.controls
+  }
+
   getUserData(){
     let token = this._jwtService.DecodeToken(String(localStorage.getItem('currentClientUser')))
     let id = token['UserId']

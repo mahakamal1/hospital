@@ -45,4 +45,12 @@ export class NurseService {
       }
     })
   }
+
+  GetCurrentPatientArrival(nurseid:number):Observable<currentReservation[]>{
+    return this._http.get<currentReservation[]>(environment.baseUrl+'api/Nurse/GetCurrentPatientArrival',{
+      params:{
+        nurseid:nurseid
+      }
+    })
+  }
 }

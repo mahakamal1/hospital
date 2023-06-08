@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { JwtDecodeService } from 'src/app/core/services/jwt-decode.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,11 @@ export class LoginComponent implements OnInit{
       }else if(role=='Nurse'){
         this._route.navigate(['/nurse/currentPatients'])
       }
-  })
+
+  },(err:HttpErrorResponse)=>{
+    this._toastrService.error(err.error)
+  }
+  )
   }
 
   ngOnInit(): void {

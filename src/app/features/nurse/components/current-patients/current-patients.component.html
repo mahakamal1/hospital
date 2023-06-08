@@ -1,4 +1,4 @@
-<div class="container tw-h-screen py-5">
+<div class="container tw-min-h-screen py-5">
   <h2 class="my-5 tw-text-editColor">Current Patients</h2>
   <table class="table align-middle">
     <thead>
@@ -20,6 +20,25 @@
           <button [disabled]="current.status === 'Arrival'" (click)="arrived(current.reservationid)" class="btnArrived">
             Arrived
           </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="my-5 tw-text-green">Arrival Patients</h2>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let current of currentArrivalReservation">
+        <td>{{current.name}}</td>
+        <td>
+          <span  class="badge " [ngClass]="current.status==='Arrival' ? 'tw-bg-green':'tw-bg-editColor'">
+            {{current.status}}
+          </span>
         </td>
       </tr>
     </tbody>
