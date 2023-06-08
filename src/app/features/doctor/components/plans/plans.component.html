@@ -61,13 +61,13 @@
       <tr *ngFor="let patient of getCurrentPlanPatient">
         <td>{{patient.name}}</td>
         <td>
-           <span class="badge tw-bg-editColor">
+           <span class="badge" [ngClass]="patient.status==='Finished'? 'tw-bg-red-600':'tw-bg-green'">
             {{patient.status}}
            </span>
         </td>
         <td>
-          <button class="btnArrived" (click)="arrived(patient.reservation)">
-            Update Status
+          <button class="btnArrived"  [disabled]="patient.status==='Finished'" (click)="arrived(patient.reservation)">
+            Finished
           </button>
         </td>
       </tr>

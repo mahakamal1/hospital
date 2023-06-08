@@ -1,24 +1,39 @@
 .headerContent{
   @apply tw-grid
   2xl:tw-grid-cols-5 2xl:tw-py-20
-  xl:tw-grid-cols-5 xl:tw-py-20;
+  xl:tw-grid-cols-5 xl:tw-py-20
+  lg:tw-grid-cols-5
+  md:tw-grid-cols-4
+  tw-grid-cols-4;
   &_headerImage{
-    @apply 2xl:tw-col-span-2 xl:tw-col-span-2;
+    @apply 2xl:tw-col-span-2 xl:tw-col-span-2 lg:tw-col-span-2;
     &_container{
-      @apply  xl:tw-bg-logoName xl:tw-h-72
+      @apply
+      2xl:tw-bg-logoName xl:tw-h-72
+      2xl:tw-rounded-tl-3xl
+      2xl:tw-rounded-br-3xl
+      xl:tw-bg-logoName 2xl:tw-h-72
       xl:tw-rounded-tl-3xl
       xl:tw-rounded-br-3xl
+      lg:tw-bg-logoName lg:tw-h-64
+      lg:tw-rounded-tl-2xl
+      lg:tw-rounded-br-2xl
+      2xl:tw-block xl:tw-block md:tw-hidden lg:tw-hidden tw-hidden
       tw-w-72 tw-mx-auto tw-relative;
       >img{
         @apply tw-object-cover
+        2xl:tw-rounded-tl-3xl 2xl:tw-h-72
+        2xl:tw-rounded-br-3xl
+        2xl:tw-absolute 2xl:-tw-left-5 2xl:-tw-top-5
         xl:tw-rounded-tl-3xl xl:tw-h-72
         xl:tw-rounded-br-3xl
-        xl:tw-absolute xl:-tw-left-5 xl:-tw-top-5;
+        xl:tw-absolute xl:-tw-left-5 xl:-tw-top-5
+        ;
       }
     }
   }
   &_textContent{
-    @apply 2xl:tw-col-span-3 xl:tw-col-span-3;
+    @apply 2xl:tw-col-span-3 xl:tw-col-span-3 lg:tw-col-span-3 md:tw-col-span-4 tw-col-span-4;
     h1{
       @apply tw-font-bold tw-leading-normal;
       >span{
@@ -33,13 +48,26 @@
       tw-border-logoName tw-text-white tw-ease-in-out
       hover:tw-bg-transparent hover:tw-text-logoName
       2xl:tw-py-2 2xl:tw-px-6  2xl:tw-my-3 2xl:tw-rounded-lg
-      xl:tw-py-1.5 xl:tw-px-6 xl:tw-my-3 xl:tw-rounded-md;
+      xl:tw-py-1.5 xl:tw-px-6 xl:tw-my-3 xl:tw-rounded-md
+      lg:tw-py-1 lg:tw-px-5 lg:tw-my-2.5 lg:tw-rounded-md
+      md:tw-py-1.5 md:tw-px-6 md:tw-my-3 md:tw-rounded-md
+      tw-py-1.5 tw-px-6 tw-my-3 tw-rounded-md;
     }
     .services{
-      @apply tw-w-full tw-bg-logoName tw-rounded-lg tw-grid tw-grid-cols-3
-      2xl:tw-p-10 xl:tw-p-8 2xl:tw-mt-10 xl:tw-mt-4;
+      @apply tw-w-full tw-bg-logoName tw-rounded-lg tw-grid
+      2xl:tw-grid-cols-3
+      xl:tw-grid-cols-3
+      lg:tw-grid-cols-3
+      md:tw-grid-cols-4
+      tw-grid-cols-4
+      2xl:tw-p-10 2xl:tw-mt-10
+      xl:tw-p-8 xl:tw-mt-4
+      lg:tw-p-7 lg:tw-mt-3.5
+      md:tw-p-8 md:tw-mt-4
+      tw-p-8 tw-mt-4;
       div{
-        @apply tw-col-span-1 tw-flex tw-flex-col tw-items-center;
+        @apply tw-col-span-1
+        tw-flex tw-flex-col tw-items-center;
         >h3{
           @apply tw-font-medium tw-text-white;
         }

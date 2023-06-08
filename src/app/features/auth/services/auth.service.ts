@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Login, RegisterPatient } from '../models/model';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<string>
   public currentUser: Observable<string>
+  @Output() fireIsLoggedIn: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(
     private _http:HttpClient
   ) {
@@ -26,18 +27,24 @@ export class AuthService {
         if (user) {
           localStorage.setItem('currentClientUser', JSON.stringify(user))
           this.currentUserSubject.next(user)
+          this.fireIsLoggedIn.emit(true)
         }
         return user
       })
     )
   }
 
+  getEmitter() {
+    return this.fireIsLoggedIn;
+  }
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentClientUser')
     this.currentUserSubject.next(null!)
     location.reload()
   }
+
+
 
   register(obj:RegisterPatient){
     return this._http.post(environment.baseUrl+'register',obj,{

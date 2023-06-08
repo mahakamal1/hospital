@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit{
   name!:string
   token!:any
   role!:string
+  updatNav:boolean = false
   constructor(
     private _authService:AuthService,
     private _router:Router,
@@ -81,6 +82,15 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this._authService.getEmitter().subscribe((customObject) => {
+      this.updatNav = customObject
+      if(localStorage.getItem('currentClientUser')){
+        this.isAdminUserLoghedIn = true;
+        this.name = this.token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+      }else{
+        this.isAdminUserLoghedIn = false;
+      }
+    });
     if(localStorage.getItem('currentClientUser')){
       this.isAdminUserLoghedIn = true;
       this.name = this.token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']

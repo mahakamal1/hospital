@@ -10,9 +10,10 @@
     </thead>
     <tbody >
       <tr *ngFor="let current of currentReservation">
+       <ng-container *ngIf="current.status!=='Finished'">
         <td>{{current.name}}</td>
         <td>
-          <span  class="badge " [ngClass]="current.status==='Arrival' ? 'tw-bg-green':'tw-bg-editColor'">
+          <span  class="badge " [ngClass]="current.status==='Arrival' ? 'tw-bg-green': current.status==='Finished' ? 'tw-bg-red-600':'tw-bg-editColor'">
             {{current.status}}
           </span>
         </td>
@@ -21,6 +22,7 @@
             Arrived
           </button>
         </td>
+       </ng-container>
       </tr>
     </tbody>
   </table>
@@ -36,7 +38,7 @@
       <tr *ngFor="let current of currentArrivalReservation">
         <td>{{current.name}}</td>
         <td>
-          <span  class="badge " [ngClass]="current.status==='Arrival' ? 'tw-bg-green':'tw-bg-editColor'">
+          <span  class="badge tw-bg-green" >
             {{current.status}}
           </span>
         </td>
